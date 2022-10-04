@@ -8,7 +8,24 @@ public abstract class Issues {
     private Pasos pasos;
     private String severidad;
     private String actualResult;
+    private QA reporta_QA;
+    private DEV devAsiganado;
 
+    public QA getReporta_QA() {
+        return reporta_QA;
+    }
+
+    public void setReporta_QA(QA reporta_QA) {
+        this.reporta_QA = reporta_QA;
+    }
+
+    public DEV getDevAsiganado() {
+        return devAsiganado;
+    }
+
+    public void setDevAsiganado(DEV devAsiganado) {
+        this.devAsiganado = devAsiganado;
+    }
 
     public String getTitulo() {
         return titulo;
