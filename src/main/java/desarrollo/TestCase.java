@@ -5,7 +5,6 @@ public class TestCase {
     private String priority;
     private String description;
     private Pasos pasos;
-    private String preconditions;
     private String status;
 
     public TestCase(String title, String priority, Pasos pasos, String status) {
@@ -47,13 +46,6 @@ public class TestCase {
         this.pasos = pasos;
     }
 
-    public String getPreconditions() {
-        return preconditions;
-    }
-
-    public void setPreconditions(String preconditions) {
-        this.preconditions = preconditions;
-    }
 
     public String getStatus() {
         return status;
