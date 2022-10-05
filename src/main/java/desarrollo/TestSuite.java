@@ -6,7 +6,7 @@ import java.util.List;
 public class TestSuite {
     private String titulo;
     private String sprint;
-    private List<TestCase> testCases = new ArrayList<>();
+    private List<TestCaseEjecutado> testCases = new ArrayList<>();
 
     private boolean ejecutado;
 
@@ -31,11 +31,11 @@ public class TestSuite {
         this.sprint = sprint;
     }
 
-    public List<TestCase> getTestCases() {
+    public List<TestCaseEjecutado> getTestCases() {
         return testCases;
     }
 
-    public void agregarTestCase(TestCase test){
+    public void agregarTestCase(TestCaseEjecutado test){
         this.testCases.add(test);
     }
 }

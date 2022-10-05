@@ -4,17 +4,19 @@ public class TestCaseEjecutado extends TestCase{
     private String build;
     private Owner owner;
     private Bug bugAssosiated;
-    private String estado;
+    private EstadosDelTest estado;
 
-    public TestCaseEjecutado(String title, String priority, Pasos pasos, Owner creador) {
+
+    public TestCaseEjecutado(String title, String priority, Pasos pasos, Owner creador ) {
         super(title, priority, pasos, creador);
+
     }
 
-    public String getEstado() {
+    public EstadosDelTest getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadosDelTest estado) {
         this.estado = estado;
     }
 
@@ -40,5 +42,15 @@ public class TestCaseEjecutado extends TestCase{
 
     public void setBugAssosiated(Bug bugAssosiated) {
         this.bugAssosiated = bugAssosiated;
+    }
+
+    @Override
+    public String toString() {
+        return "TestCaseEjecutado{" +
+                "build='" + build + '\'' +
+                ", owner=" + owner +
+                ", bugAssosiated=" + bugAssosiated +
+                ", estado=" + estado +
+                '}';
     }
 }
