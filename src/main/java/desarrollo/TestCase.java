@@ -4,14 +4,15 @@ public class TestCase {
     private String title;
     private String priority;
     private String description;
+    private Owner creador;
     private Pasos pasos;
-    private String status;
+    private boolean ejecutado;
 
-    public TestCase(String title, String priority, Pasos pasos, String status) {
+    public TestCase(String title, String priority, Pasos pasos, Owner creador) {
         this.title = title;
         this.priority = priority;
         this.pasos = pasos;
-        this.status = status;
+        this.creador = creador;
     }
 
     public String getTitle() {
@@ -47,11 +48,23 @@ public class TestCase {
     }
 
 
-    public String getStatus() {
-        return status;
+    public boolean getStatus() {
+        return ejecutado;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(boolean ejecutado) {
+        this.ejecutado = ejecutado;
+    }
+
+    @Override
+    public String toString() {
+        return "TestCase{" +
+                "title='" + title + '\'' +
+                ", priority='" + priority + '\'' +
+                ", description='" + description + '\'' +
+                ", creador=" + creador +
+                ", pasos=" + pasos +
+                ", ejecutado=" + ejecutado +
+                '}';
     }
 }

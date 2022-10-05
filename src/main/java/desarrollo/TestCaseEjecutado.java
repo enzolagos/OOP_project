@@ -4,9 +4,18 @@ public class TestCaseEjecutado extends TestCase{
     private String build;
     private Owner owner;
     private Bug bugAssosiated;
+    private String estado;
 
-    public TestCaseEjecutado(String title, String priority, Pasos pasos, String status) {
-        super(title, priority, pasos, status);
+    public TestCaseEjecutado(String title, String priority, Pasos pasos, Owner creador) {
+        super(title, priority, pasos, creador);
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getBuild() {
