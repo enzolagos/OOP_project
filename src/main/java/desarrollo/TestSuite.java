@@ -14,6 +14,8 @@ public class TestSuite {
         this.sprint = sprint;
     }
 
+
+
     public String getTitulo() {
         return titulo;
     }
@@ -33,6 +35,9 @@ public class TestSuite {
 
     public void agregarATestCases(TestCase testCase){
         testPorEjecutar.add(testCase);
+
+    public List<TestCaseEjecutado> getTestCases() {
+        return testCasesEjecutados;
     }
     public void agregarATestCasesEjecutados(TestCaseEjecutado testCaseEjecutado){
         testsEjecutados.add(testCaseEjecutado);
@@ -50,4 +55,17 @@ public class TestSuite {
         return bugsAsociados;
     }
 
+
+    public List<Issues> bugsAsociadosDev(DEV dev){
+
+        List<Issues> bugsAsociados = new ArrayList<>();
+        for (TestCaseEjecutado test: testCasesEjecutados) {
+
+            //si es del dev agregarlo a la lista
+            if(test.getIssueAssosiated().getDevAsiganado().equals(dev)){
+                bugsAsociados.add(test.getIssueAssosiated());
+            }
+        }
+        return bugsAsociados;
+    }
 }

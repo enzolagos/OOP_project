@@ -2,6 +2,7 @@ package desarrollo;
 
 public class TestCase {
 
+    //private List<TestCaseEjecutado> testCasesEjecutados = new ArrayList<>();
     private String title;
     private String priority;
     private String description;
@@ -70,4 +71,31 @@ public class TestCase {
     }
 
 
+    /*public List<TestCaseEjecutado> getTestCasesEjecutados() {
+        return testCasesEjecutados;
+    }
+
+    public void setTestCasesEjecutados(List<TestCaseEjecutado> testCasesEjecutados) {
+        this.testCasesEjecutados = testCasesEjecutados;
+    }*/
+
+    public Owner getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Owner creador) {
+        this.creador = creador;
+    }
+
+    public TestCaseEjecutado ejecutar(String build, Issues issueAsociado, EstadosDelTest estado){
+        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
+        testEjecutado.setBuild(build);
+        testEjecutado.setIssueAssosiated(issueAsociado);
+        testEjecutado.setEstado(estado);
+
+        //agrego a una lista de test cases
+        //testCasesEjecutados.add(testEjecutado);
+        return testEjecutado;
+
+    }
 }

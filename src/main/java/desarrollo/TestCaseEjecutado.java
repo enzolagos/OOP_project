@@ -9,6 +9,7 @@ public class TestCaseEjecutado extends TestCase{
 
     public TestCaseEjecutado(String title, String priority, Pasos pasos, Owner creador ) {
         super(title, priority, pasos, creador);
+
     }
 
     public EstadosDelTest getEstado() {

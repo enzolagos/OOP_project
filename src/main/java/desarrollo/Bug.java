@@ -24,5 +24,10 @@ public class Bug extends Issues{
         this.expectedResult = expectedResult;
     }
 
-
+    @Override
+    public String toString() {
+        return "Bug{" +
+                "Titulo='" + super.getTitulo() + '\'' +
+                '}';
+    }
 }
