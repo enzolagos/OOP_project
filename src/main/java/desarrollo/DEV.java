@@ -1,16 +1,26 @@
 package desarrollo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DEV extends Owner{
-    Bug bugAsignado;
+
+    private List<Bug> bugAsignados = new ArrayList<>();
+
     public DEV(String nombre, String apellido, String rol) {
         super(nombre, apellido, rol);
     }
 
-    public Bug getBugAsignado() {
-        return bugAsignado;
+    public List<Bug> getBugAsignados() {
+        return bugAsignados;
     }
 
-    public void setBugAsignado(Bug bugAsignado) {
-        this.bugAsignado = bugAsignado;
+    public void setBugAsignados(List<Bug> bugAsignados) {
+        this.bugAsignados = bugAsignados;
+    }
+
+    @Override
+    public String toString() {
+        return "DEV: " + super.getNombre();
     }
 }

@@ -3,7 +3,7 @@ package desarrollo;
 public class TestCaseEjecutado extends TestCase{
     private String build;
     private Owner owner;
-    private Bug bugAssosiated;
+    private Issues issueAssosiated;
     private EstadosDelTest estado;
 
 
@@ -36,12 +36,12 @@ public class TestCaseEjecutado extends TestCase{
         this.owner = owner;
     }
 
-    public Bug getBugAssosiated() {
-        return bugAssosiated;
+    public Issues getIssueAssosiated() {
+        return issueAssosiated;
     }
 
-    public void setBugAssosiated(Bug bugAssosiated) {
-        this.bugAssosiated = bugAssosiated;
+    public void setIssueAssosiated(Issues issueAssosiated) {
+        this.issueAssosiated = issueAssosiated;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class TestCaseEjecutado extends TestCase{
         return "TestCaseEjecutado{" +
                 "build='" + build + '\'' +
                 ", owner=" + owner +
-                ", bugAssosiated=" + bugAssosiated +
+                ", issueAssosiated=" + issueAssosiated +
                 ", estado=" + estado +
                 '}';
     }
