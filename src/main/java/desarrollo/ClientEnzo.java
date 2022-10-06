@@ -41,16 +41,26 @@ public class ClientEnzo {
 
         System.out.println("*************");
 
+
+        //Se desea tener un método donde me muestre los test cases creados por un específico QA
+
+        //creo QA
         QA qa1 = new QA("Enzo", "Lagos", "el facha");
-        Pasos pasos1 = new Pasos("pasoss");
-        Bug bug = new Bug("Error", "blabla", "alta", pasos1,"Alta","actual", "expected");
-        TestCase test1 = new TestCase("Error", "Alta",pasos1,qa1);
-        System.out.println(test1.toString());
 
-        TestCaseEjecutado testEjecutado = test1.ejecutar("version 1.0",bug, TestCase.EstadosDelTest.PASSED);
+        //creo test cases
 
-        System.out.println(testEjecutado.getTitle());
-        System.out.println(testEjecutado.toString());
+        TestCase test1 = new TestCase("Error 1", "Alta",new Pasos("pasoss"),qa1);
+        TestCase test2 = new TestCase("Error 2", "Medium",new Pasos("pasos 2"),qa1);
+
+        //agrego test case
+        testSuite.agregarATestCases(test1);
+        testSuite.agregarATestCases(test2);
+
+        //Mostrar test cases creados por QA
+
+        System.out.println("*** test cases creados por: "+qa1.toString()+" ***");
+        System.out.println(testSuite.mostrarTestCasesCreados(qa1));
+
 
 
 

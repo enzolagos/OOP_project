@@ -30,6 +30,6 @@ public class Bug extends Issues{
     public String toString() {
         return "Bug{" +
                 "Titulo='" + super.getTitulo() + '\'' +
-                '}';
+                '}'+"\n";
     }
 }
