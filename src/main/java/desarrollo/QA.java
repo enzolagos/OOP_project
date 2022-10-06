@@ -28,4 +28,8 @@ public class QA extends Owner{
         }
     }
 
+    @Override
+    public String toString() {
+        return "QA: " + super.getNombre();
+    }
 }
