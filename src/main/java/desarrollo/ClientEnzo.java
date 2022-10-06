@@ -60,13 +60,7 @@ public class ClientEnzo {
 
         System.out.println("*** test cases creados por: "+qa1.toString()+" ***");
         System.out.println(testSuite.mostrarTestCasesCreados(qa1));
-
-
-
-
-
-
-
+        
 
     }
 }

@@ -29,7 +29,6 @@ public class TestSuite {
     public void agregarTestSuite(){
 
     }
-
     public String getTitulo() {
         return titulo;
     }
@@ -53,8 +52,6 @@ public class TestSuite {
     public void agregarTestCase(TestCaseEjecutado test){
         this.testCases.add(test);
     }
-
-
     public List<Issues> bugsAsociadosDev(DEV dev){
 
         List<Issues> bugsAsociados = new ArrayList<>();
@@ -67,7 +64,6 @@ public class TestSuite {
         }
         return bugsAsociados;
     }
-
     public List<TestCase> mostrarTestCasesCreados(QA qa){
         List<TestCase> testcasesCreados = new ArrayList<>();
 
@@ -76,7 +72,18 @@ public class TestSuite {
                 testcasesCreados.add(testCase);
             }
         }
-
         return testcasesCreados;
+    }
+
+    //
+
+    public List<TestCase> mostrarTestCasesPrioridad(String prioridad){
+        List<TestCase> testcasesPrioridad = new ArrayList<>();
+        for (TestCase testcase : testCases) {
+            if(testcase.getPriority().equals(prioridad)){
+                testcasesPrioridad.add(testcase);
+            }
+        }
+        return testcasesPrioridad;
     }
 }
