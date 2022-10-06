@@ -1,12 +1,15 @@
 package desarrollo;
 
 public abstract class Issues {
+    public enum Severidad{
+        BLOQUEADORA, ALTA, MEDIA, BAJA, TRIVIAL
+    }
 
     private String titulo;
     private String descripcion;
     private String prioridad;
     private Pasos pasos;
-    private String severidad;
+    private Severidad severidad;
     private String actualResult;
     private QA reporta_QA;
     private DEV devAsiganado;
@@ -60,11 +63,11 @@ public abstract class Issues {
         this.pasos = pasos;
     }
 
-    public String getSeveridad() {
+    public Severidad getSeveridad() {
         return severidad;
     }
 
-    public void setSeveridad(String severidad) {
+    public void setSeveridad(Severidad severidad) {
         this.severidad = severidad;
     }
 

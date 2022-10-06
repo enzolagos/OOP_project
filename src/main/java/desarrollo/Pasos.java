@@ -1,5 +1,7 @@
 package desarrollo;
 
+import java.util.Arrays;
+
 public class Pasos {
 
     private String titulo;
@@ -33,4 +35,6 @@ public class Pasos {
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
+
+
 }

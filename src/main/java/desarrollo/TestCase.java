@@ -1,21 +1,21 @@
 package desarrollo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TestCase {
 
-    //private List<TestCaseEjecutado> testCasesEjecutados = new ArrayList<>();
-    private String title;
-    private String priority;
-    private String description;
-    private Owner creador;
-    private Pasos pasos;
     public enum EstadosDelTest{
         PASSED,FAILED,BLOCKED;
     }
+    public enum Prioridad{
+        HIGH,MEDIUM,LOW
+    }
+    private String title;
+    private String description;
+    private Owner creador;
+    private Pasos pasos;
+    private Prioridad priority;
 
-    public TestCase(String title, String priority, Pasos pasos, Owner creador) {
+
+    public TestCase(String title, Prioridad priority, Pasos pasos, Owner creador) {
         this.title = title;
         this.priority = priority;
         this.pasos = pasos;
@@ -30,11 +30,11 @@ public class TestCase {
         this.title = title;
     }
 
-    public String getPriority() {
+    public Prioridad getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Prioridad priority) {
         this.priority = priority;
     }
 
@@ -54,6 +54,13 @@ public class TestCase {
         this.pasos = pasos;
     }
 
+    public TestCaseEjecutado ejecutar(String build,Issues issueAsociado, TestCase.EstadosDelTest estado){
+        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
+        testEjecutado.setBuild(build);
+        testEjecutado.setIssueAsociado(issueAsociado);
+        testEjecutado.setEstado(estado);
+        return testEjecutado;
+    }
 
     @Override
     public String toString() {
@@ -67,13 +74,7 @@ public class TestCase {
     }
 
 
-    /*public List<TestCaseEjecutado> getTestCasesEjecutados() {
-        return testCasesEjecutados;
-    }
 
-    public void setTestCasesEjecutados(List<TestCaseEjecutado> testCasesEjecutados) {
-        this.testCasesEjecutados = testCasesEjecutados;
-    }*/
 
     public Owner getCreador() {
         return creador;
@@ -83,15 +84,4 @@ public class TestCase {
         this.creador = creador;
     }
 
-    public TestCaseEjecutado ejecutar(String build, Issues issueAsociado, EstadosDelTest estado){
-        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
-        testEjecutado.setBuild(build);
-        testEjecutado.setIssueAssosiated(issueAsociado);
-        testEjecutado.setEstado(estado);
-
-        //agrego a una lista de test cases
-        //testCasesEjecutados.add(testEjecutado);
-        return testEjecutado;
-
-    }
 }
