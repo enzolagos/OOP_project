@@ -50,6 +50,13 @@ public class TestCase {
         this.pasos = pasos;
     }
 
+    public TestCaseEjecutado ejecutar(String build,Issues issueAsociado, TestCase.EstadosDelTest estado){
+        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
+        testEjecutado.setBuild(build);
+        testEjecutado.setIssueAsociado(issueAsociado);
+        testEjecutado.setEstado(estado);
+        return testEjecutado;
+    }
 
     @Override
     public String toString() {
@@ -62,12 +69,5 @@ public class TestCase {
                 '}';
     }
 
-    public TestCaseEjecutado ejecutar(String build,Bug bugAsociado, EstadosDelTest estado){
-        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
-        testEjecutado.setBuild(build);
-        testEjecutado.setBugAssosiated(bugAsociado);
-        testEjecutado.setEstado(estado);
-        return testEjecutado;
 
-    }
 }

@@ -6,9 +6,8 @@ import java.util.List;
 public class TestSuite {
     private String titulo;
     private String sprint;
-    private List<TestCaseEjecutado> testCases = new ArrayList<>();
-
-    private boolean ejecutado;
+    private List<TestCaseEjecutado> testsEjecutados = new ArrayList<>();
+    private List <TestCase> testPorEjecutar = new ArrayList<>();
 
     public TestSuite(String titulo, String sprint) {
         this.titulo = titulo;
@@ -31,11 +30,24 @@ public class TestSuite {
         this.sprint = sprint;
     }
 
-    public List<TestCaseEjecutado> getTestCases() {
-        return testCases;
+
+    public void agregarATestCases(TestCase testCase){
+        testPorEjecutar.add(testCase);
+    }
+    public void agregarATestCasesEjecutados(TestCaseEjecutado testCaseEjecutado){
+        testsEjecutados.add(testCaseEjecutado);
+    }
+    public List<Issues> bugsAsociadosDev(DEV dev){
+
+        List<Issues> bugsAsociados = new ArrayList<>();
+        for (TestCaseEjecutado test: testsEjecutados) {
+
+            //si es del dev agregarlo a la lista
+            if(test.getIssueAsociado().getDevAsiganado().equals(dev)){
+                bugsAsociados.add(test.getIssueAsociado());
+            }
+        }
+        return bugsAsociados;
     }
 
-    public void agregarTestCase(TestCaseEjecutado test){
-        this.testCases.add(test);
-    }
 }
