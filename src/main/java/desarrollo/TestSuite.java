@@ -68,4 +68,16 @@ public class TestSuite {
         }
         return bugsAsociados;
     }
+
+    public List<TestCase> mostrarTestCasesCreados(QA qa){
+        List<TestCase> testcasesCreados = new ArrayList<>();
+
+        for (TestCase testCase: testCases) {
+            if(testCase.getCreador().equals(qa)){
+                testcasesCreados.add(testCase);
+            }
+        }
+
+        return testcasesCreados;
+    }
 }

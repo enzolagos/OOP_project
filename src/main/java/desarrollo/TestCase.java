@@ -67,7 +67,7 @@ public class TestCase {
                 ", description='" + description + '\'' +
                 ", creador=" + creador +
                 ", pasos=" + pasos +
-                '}';
+                '}'+"\n";
     }
 
 
