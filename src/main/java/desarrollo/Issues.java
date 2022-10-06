@@ -11,6 +11,7 @@ public abstract class Issues {
     private QA reporta_QA;
     private DEV devAsiganado;
 
+
     public QA getReporta_QA() {
         return reporta_QA;
     }

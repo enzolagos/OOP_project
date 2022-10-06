@@ -1,17 +1,25 @@
 package desarrollo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestCase {
+
+    //private List<TestCaseEjecutado> testCasesEjecutados = new ArrayList<>();
     private String title;
     private String priority;
     private String description;
+    private Owner creador;
     private Pasos pasos;
-    private String status;
+    public enum EstadosDelTest{
+        PASSED,FAILED,BLOCKED;
+    }
 
-    public TestCase(String title, String priority, Pasos pasos, String status) {
+    public TestCase(String title, String priority, Pasos pasos, Owner creador) {
         this.title = title;
         this.priority = priority;
         this.pasos = pasos;
-        this.status = status;
+        this.creador = creador;
     }
 
     public String getTitle() {
@@ -47,11 +55,43 @@ public class TestCase {
     }
 
 
-    public String getStatus() {
-        return status;
+    @Override
+    public String toString() {
+        return "TestCase{" +
+                "title='" + title + '\'' +
+                ", priority='" + priority + '\'' +
+                ", description='" + description + '\'' +
+                ", creador=" + creador +
+                ", pasos=" + pasos +
+                '}';
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+
+    /*public List<TestCaseEjecutado> getTestCasesEjecutados() {
+        return testCasesEjecutados;
+    }
+
+    public void setTestCasesEjecutados(List<TestCaseEjecutado> testCasesEjecutados) {
+        this.testCasesEjecutados = testCasesEjecutados;
+    }*/
+
+    public Owner getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Owner creador) {
+        this.creador = creador;
+    }
+
+    public TestCaseEjecutado ejecutar(String build, Issues issueAsociado, EstadosDelTest estado){
+        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
+        testEjecutado.setBuild(build);
+        testEjecutado.setIssueAssosiated(issueAsociado);
+        testEjecutado.setEstado(estado);
+
+        //agrego a una lista de test cases
+        //testCasesEjecutados.add(testEjecutado);
+        return testEjecutado;
+
     }
 }
