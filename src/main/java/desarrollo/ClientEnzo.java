@@ -15,7 +15,7 @@ public class ClientEnzo {
         DEV dev1 = new DEV("juli", "barbi","po");
 
         //creo test
-        TestCase testcase1 = new TestCase("Test case 1", TestCase.Prioridad.HIGH, new Pasos("pasoss"), owner1);
+        TestCase testcase1 = new TestCase("Test case 1", TestCase.Prioridad.MEDIUM, new Pasos("pasoss"), owner1);
 
         //creo bugs
         Bug bug1 = new Bug();
@@ -39,7 +39,7 @@ public class ClientEnzo {
         //muestro bugs segun el dev asociado
 
         System.out.println("*** BUGS ASOCIADOS AL: "+dev1.toString()+" ***");
-        System.out.println(String.valueOf(testSuite.bugsAsociadosDev(dev1)));
+        testSuite.mostrarBugs(testSuite.obtenerBugsAsociadosAlDev(dev1));
 
         System.out.println("*************");
 
@@ -55,16 +55,16 @@ public class ClientEnzo {
         TestCase test2 = new TestCase("Error 2", TestCase.Prioridad.MEDIUM,new Pasos("pasos 2"),qa1);
 
         //agrego test case a tc comun y ejecutados
-        testSuite.agregarATestCases(test1);
+        testSuite.agregarATestCasesPorEjecutar(test1);
         //testSuite.agregarATestCasesEjecutados(test1.ejecutar("random",bug1, TestCase.EstadosDelTest.PASSED));
-        testSuite.agregarATestCases(test2);
+        testSuite.agregarATestCasesPorEjecutar(test2);
         //testSuite.agregarATestCasesEjecutados(test2.ejecutar("aaaaa",bug2, TestCase.EstadosDelTest.BLOCKED));
 
 
         //Mostrar test cases creados por QA
 
         System.out.println("*** test cases creados por: "+qa1.toString()+" ***");
-        System.out.println(testSuite.mostrarTestCasesCreados(qa1));
+        testSuite.mostrarTests(testSuite.obtenerTestCasesCreadosPorUnQA(qa1));
 
         //Muestro estados
         System.out.println("******************************************");
@@ -72,11 +72,11 @@ public class ClientEnzo {
 
         //Mostrar test case por prioridad
         System.out.println("******************************************");
-        System.out.println(testSuite.mostrarTestCasesPrioridad(TestCase.Prioridad.HIGH));;
+        testSuite.mostrarTests(testSuite.obtenerTestCasesPorPrioridad(TestCase.Prioridad.HIGH));
 
         //mostrar por severidad
         System.out.println("******************************************");
-        System.out.println(testSuite.obtenerBugsPorSeveridad(Issues.Severidad.ALTA));
+        testSuite.mostrarBugs(testSuite.obtenerBugsPorSeveridad(Issues.Severidad.ALTA));
 
 
 

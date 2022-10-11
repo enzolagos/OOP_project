@@ -25,5 +25,8 @@ public class Bug extends Issues{
         this.expectedResult = expectedResult;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Bug: %s \nDescripcion: %s\nPrioridad: %s\nPasos: %s\nSeveridad: %s\nResultado actual: %s\nResultado esperado: %s\n",super.getTitulo(),super.getDescripcion(),super.getPrioridad(),super.getPasos(),super.getSeveridad(),super.getActualResult(),expectedResult);
+    }
 }
