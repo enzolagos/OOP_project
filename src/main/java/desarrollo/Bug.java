@@ -7,7 +7,7 @@ public class Bug extends Issues{
 
 
     public Bug() {}
-    public Bug(String titulo, String descripcion, String prioridad, Pasos pasos, Severidad severidad, String actualResult, String expectedResult){
+    public Bug(String titulo, String descripcion, TestCase.Prioridad prioridad, Pasos pasos, Severidad severidad, String actualResult, String expectedResult){
         this.setTitulo(titulo);
         this.setDescripcion(descripcion);
         this.setPrioridad(prioridad);
@@ -25,5 +25,8 @@ public class Bug extends Issues{
         this.expectedResult = expectedResult;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Bug: %s \nDescripcion: %s\nPrioridad: %s\nPasos: %s\nSeveridad: %s\nResultado actual: %s\nResultado esperado: %s\n",super.getTitulo(),super.getDescripcion(),super.getPrioridad(),super.getPasos(),super.getSeveridad(),super.getActualResult(),expectedResult);
+    }
 }

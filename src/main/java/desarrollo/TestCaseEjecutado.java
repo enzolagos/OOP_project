@@ -46,15 +46,7 @@ public class TestCaseEjecutado extends TestCase{
 
     @Override
     public String toString() {
-        return "TestCaseEjecutado{" +
-                "title='" + this.getTitle() + '\'' +
-                "priority='" + this.getPriority() + '\'' +
-                "pasos='" + this.getPasos() + '\'' +
-                "owner='" + this.getOwner() + '\'' +
-                "build='" + build + '\'' +
-                ", owner=" + owner +
-                ", issueAsociado=" + issueAsociado +
-                ", estado=" + estado +
-                '}';
+        return String.format("Test ejecutado: %s \nPrioridad: %s\nPasos: %s\nCreado por: %s\nBuild: %s\nOwner: %s\nIssue asociad: %s\nEstado: %s\n*****************",this.getTitle(),this.getPriority(),this.getPasos(),this.getCreador(),build,owner,issueAsociado,estado);
     }
+
 }

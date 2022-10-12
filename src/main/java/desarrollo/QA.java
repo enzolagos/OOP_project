@@ -6,8 +6,10 @@ import java.util.List;
 public class QA extends Owner{
     private List<TestCase> testCasesAsociados = new ArrayList<>();
     private Bug bugReportado;
-    public QA(String nombre, String apellido, String rol) {
-        super(nombre, apellido, rol);
+    public QA(String nombre, String apellido) {
+        super.setNombre(nombre);
+        super.setApellido(apellido);
+        super.setRol("QA");
     }
     public Bug getBugReportado() {
         return bugReportado;

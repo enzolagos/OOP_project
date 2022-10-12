@@ -31,31 +31,43 @@ public class TestSuite {
     public void setSprint(String sprint) {
         this.sprint = sprint;
     }
+    public List<TestCase> getTestPorEjecutar() {
+        return testPorEjecutar;
+    }
 
+    public void setTestPorEjecutar(List<TestCase> testPorEjecutar) {
+        this.testPorEjecutar = testPorEjecutar;
+    }
 
-    public void agregarATestCases(TestCase testCase){
-        testPorEjecutar.add(testCase);}
-
-    public List<TestCaseEjecutado> getTestCases() {
+    public List<TestCaseEjecutado> getTestCasesEjecutados() {
         return testCasesEjecutados;
     }
+
+    public void setTestCasesEjecutados(List<TestCaseEjecutado> testCasesEjecutados) {
+        this.testCasesEjecutados = testCasesEjecutados;
+    }
+
+    public void agregarATestCasesPorEjecutar(TestCase testCase){
+        testPorEjecutar.add(testCase);}
+
     public void agregarATestCasesEjecutados(TestCaseEjecutado testCaseEjecutado){
         testCasesEjecutados.add(testCaseEjecutado);
     }
-    public List<Issues> bugsAsociadosDev(DEV dev){
 
-        List<Issues> bugsAsociados = new ArrayList<>();
+    public List<Bug> obtenerBugsAsociadosAlDev(DEV dev){ //&& test.getIssueAsociado() instanceof Bug
+        List<Bug> bugsAsociados = new ArrayList<>();
         for (TestCaseEjecutado test: testCasesEjecutados) {
 
             //si es del dev agregarlo a la lista
-            if(test.getIssueAsociado().getDevAsiganado().equals(dev)){
-                bugsAsociados.add(test.getIssueAsociado());
+            if(test.getIssueAsociado() != null && test.getIssueAsociado().getDevAsiganado().equals(dev) && test.getIssueAsociado() instanceof Bug){
+                bugsAsociados.add((Bug) test.getIssueAsociado());
             }
         }
         return bugsAsociados;
     }
 
-    public List<TestCase> mostrarTestCasesCreados(QA qa){
+
+    public List<TestCase> obtenerTestCasesCreadosPorUnQA(QA qa){
         List<TestCase> testcasesCreados = new ArrayList<>();
 
         for (TestCase testCase: testPorEjecutar) {
@@ -66,6 +78,8 @@ public class TestSuite {
 
         return testcasesCreados;
     }
+
+
     public void mostrarEstadoDeTests(){
         int[] contFailedPassedBlocked = {0,0,0};
 
@@ -82,7 +96,7 @@ public class TestSuite {
         System.out.println("TEST PASSED: "+contFailedPassedBlocked[1]);
         System.out.println("TEST BLOCKED: "+contFailedPassedBlocked[2]);
     }
-    public List<TestCase> mostrarTestCasesPrioridad(TestCase.Prioridad prioridad){
+    public List<TestCase> obtenerTestCasesPorPrioridad(TestCase.Prioridad prioridad){
         List<TestCase> testcasesPrioridad = new ArrayList<>();
         for (TestCase testcase : testPorEjecutar) {
             if(testcase.getPriority().equals(prioridad)){
@@ -92,14 +106,33 @@ public class TestSuite {
         return testcasesPrioridad;
     }
 
-    public List<Issues> obtenerBugsPorSeveridad(Issues.Severidad severidad){
-        List<Issues> bugs = new ArrayList<>();
+    public List<Bug> obtenerBugsPorSeveridad(Issues.Severidad severidad){
+        List<Bug> bugs = new ArrayList<>();
         for (TestCaseEjecutado test: testCasesEjecutados
              ) {
-            if (test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug){
-                bugs.add(test.getIssueAsociado());
+            if (test.getIssueAsociado() != null && test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug){
+                bugs.add((Bug) test.getIssueAsociado());
             }
         }
         return bugs;
+    }
+
+    public void mostrarBugs(List <Bug> listaBugs){
+        for (Bug bug: listaBugs
+        ) {
+            System.out.println(bug.toString());
+        }
+    }
+    public void mostrarTests(List <TestCase> testsCases){
+        for (TestCase test: testsCases
+        ) {
+            System.out.println(test.toString());
+        }
+    }
+    public void mostrarTestsEjecutados(List <TestCaseEjecutado> testsCasesEj){
+        for (TestCase test: testsCasesEj
+        ) {
+            System.out.println(test.toString());
+        }
     }
 }

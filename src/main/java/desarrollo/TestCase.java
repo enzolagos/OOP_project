@@ -64,13 +64,7 @@ public class TestCase {
 
     @Override
     public String toString() {
-        return "TestCase{" +
-                "title='" + title + '\'' +
-                ", priority='" + priority + '\'' +
-                ", description='" + description + '\'' +
-                ", creador=" + creador +
-                ", pasos=" + pasos +
-                '}'+"\n";
+        return String.format("TestCase: %s \nDescripcion: %s\nCreado por: %s\nPasos: %s\nPrioridad: %s\n",title,description,creador,pasos,priority);
     }
 
 
