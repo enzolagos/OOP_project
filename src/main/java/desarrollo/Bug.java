@@ -7,7 +7,7 @@ public class Bug extends Issues{
 
 
     public Bug() {}
-    public Bug(String titulo, String descripcion, String prioridad, Pasos pasos, Severidad severidad, String actualResult, String expectedResult){
+    public Bug(String titulo, String descripcion, TestCase.Prioridad prioridad, Pasos pasos, Severidad severidad, String actualResult, String expectedResult){
         this.setTitulo(titulo);
         this.setDescripcion(descripcion);
         this.setPrioridad(prioridad);

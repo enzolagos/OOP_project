@@ -7,8 +7,10 @@ public class DEV extends Owner{
 
     private List<Bug> bugAsignados = new ArrayList<>();
 
-    public DEV(String nombre, String apellido, String rol) {
-        super(nombre, apellido, rol);
+    public DEV(String nombre, String apellido) {
+        super.setNombre(nombre);
+        super.setApellido(apellido);
+        super.setRol("DEV");
     }
 
     public List<Bug> getBugAsignados() {

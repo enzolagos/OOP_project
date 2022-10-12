@@ -7,7 +7,7 @@ public abstract class Issues {
 
     private String titulo;
     private String descripcion;
-    private String prioridad;
+    private TestCase.Prioridad prioridad;
     private Pasos pasos;
     private Severidad severidad;
     private String actualResult;
@@ -47,11 +47,11 @@ public abstract class Issues {
         this.descripcion = descripcion;
     }
 
-    public String getPrioridad() {
+    public TestCase.Prioridad getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(TestCase.Prioridad prioridad) {
         this.prioridad = prioridad;
     }
 

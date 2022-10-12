@@ -1,15 +1,15 @@
 package desarrollo;
 
-public class Owner{
+public abstract class Owner{
     private String nombre;
     private String apellido;
     private String rol;
 
-    public Owner(String nombre, String apellido, String rol) {
+    /*public Owner(String nombre, String apellido, String rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.rol = rol;
-    }
+    }*/
 
     public String getNombre() {
         return nombre;

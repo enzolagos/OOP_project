@@ -31,14 +31,25 @@ public class TestSuite {
     public void setSprint(String sprint) {
         this.sprint = sprint;
     }
+    public List<TestCase> getTestPorEjecutar() {
+        return testPorEjecutar;
+    }
 
+    public void setTestPorEjecutar(List<TestCase> testPorEjecutar) {
+        this.testPorEjecutar = testPorEjecutar;
+    }
+
+    public List<TestCaseEjecutado> getTestCasesEjecutados() {
+        return testCasesEjecutados;
+    }
+
+    public void setTestCasesEjecutados(List<TestCaseEjecutado> testCasesEjecutados) {
+        this.testCasesEjecutados = testCasesEjecutados;
+    }
 
     public void agregarATestCasesPorEjecutar(TestCase testCase){
         testPorEjecutar.add(testCase);}
 
-    public List<TestCaseEjecutado> getTestCases() {
-        return testCasesEjecutados;
-    }
     public void agregarATestCasesEjecutados(TestCaseEjecutado testCaseEjecutado){
         testCasesEjecutados.add(testCaseEjecutado);
     }
@@ -54,12 +65,7 @@ public class TestSuite {
         }
         return bugsAsociados;
     }
-    public void mostrarBugs(List <Bug> listaBugs){
-        for (Bug bug: listaBugs
-             ) {
-            System.out.println(bug.toString());          
-        }
-    }
+
 
     public List<TestCase> obtenerTestCasesCreadosPorUnQA(QA qa){
         List<TestCase> testcasesCreados = new ArrayList<>();
@@ -72,12 +78,7 @@ public class TestSuite {
 
         return testcasesCreados;
     }
-    public void mostrarTests(List <TestCase> testsCases){
-        for (TestCase test: testsCases
-             ) {
-            System.out.println(test.toString());
-        }
-    }
+
 
     public void mostrarEstadoDeTests(){
         int[] contFailedPassedBlocked = {0,0,0};
@@ -114,5 +115,24 @@ public class TestSuite {
             }
         }
         return bugs;
+    }
+
+    public void mostrarBugs(List <Bug> listaBugs){
+        for (Bug bug: listaBugs
+        ) {
+            System.out.println(bug.toString());
+        }
+    }
+    public void mostrarTests(List <TestCase> testsCases){
+        for (TestCase test: testsCases
+        ) {
+            System.out.println(test.toString());
+        }
+    }
+    public void mostrarTestsEjecutados(List <TestCaseEjecutado> testsCasesEj){
+        for (TestCase test: testsCasesEj
+        ) {
+            System.out.println(test.toString());
+        }
     }
 }
