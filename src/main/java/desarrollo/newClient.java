@@ -76,19 +76,19 @@ public class newClient {
         //muestro TC creados por un qa
         System.out.println("*** test cases creados por: "+qa4.toString()+" ***");
         testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(qa4));
-/*
+
         //muestro bugs asignados a un dev
         System.out.println("*** bugs asignados a:"+dev2.toString()+" ***");
         testSuite1.mostrarBugs(testSuite1.obtenerBugsAsociadosAlDev(dev2));
-*/
+
         //muestro tc por prioridad
         System.out.println("*** TC con prioridad HIGH");
         testSuite1.mostrarTests(testSuite1.obtenerTestCasesPorPrioridad(TestCase.Prioridad.HIGH));
-/*
+
         //muestro bugs con severidad especifica
         System.out.println("*** Bugs con severidad ALTA ***");
         testSuite1.mostrarBugs(testSuite1.obtenerBugsPorSeveridad(Issues.Severidad.ALTA));
-*/
+
         //muestro estados de los test
         System.out.println("*** Estados de los test ejecutados ***");
         testSuite1.mostrarEstadoDeTests();

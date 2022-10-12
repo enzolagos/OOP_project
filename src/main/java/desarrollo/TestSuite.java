@@ -59,7 +59,7 @@ public class TestSuite {
         for (TestCaseEjecutado test: testCasesEjecutados) {
 
             //si es del dev agregarlo a la lista
-            if(test.getIssueAsociado().getDevAsiganado().equals(dev) && test.getIssueAsociado() instanceof Bug){
+            if(test.getIssueAsociado() != null && test.getIssueAsociado().getDevAsiganado().equals(dev) && test.getIssueAsociado() instanceof Bug){
                 bugsAsociados.add((Bug) test.getIssueAsociado());
             }
         }
@@ -110,7 +110,7 @@ public class TestSuite {
         List<Bug> bugs = new ArrayList<>();
         for (TestCaseEjecutado test: testCasesEjecutados
              ) {
-            if (test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug){
+            if (test.getIssueAsociado() != null && test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug){
                 bugs.add((Bug) test.getIssueAsociado());
             }
         }
