@@ -59,7 +59,7 @@ public class TestSuite {
         Scanner scanner = new Scanner(System.in);
         for (TestCase test: testPorEjecutar
              ) {
-            System.out.println("Ejecutando: "+test.getTitle());
+            System.out.println("Ejecutando el test de titulo: "+test.getTitle());
             System.out.printf("Ingrese el build para el test: ");
             String build = scanner.nextLine();
             TestCaseEjecutado TCEjecutado = test.ejecutar(build,IngresoDeDatos.elegirIssue(issuesAAsociar),IngresoDeDatos.elegirEstado());
