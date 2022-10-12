@@ -3,10 +3,21 @@ package desarrollo;
 public class TestCaseEjecutado extends TestCase{
     private String build;
     private Owner owner;
-    private Bug bugAssosiated;
+    private Issues issueAsociado;
+    private EstadosDelTest estado;
 
-    public TestCaseEjecutado(String title, String priority, Pasos pasos, String status) {
-        super(title, priority, pasos, status);
+
+    public TestCaseEjecutado(String title, Prioridad priority, Pasos pasos, Owner creador ) {
+        super(title, priority, pasos, creador);
+
+    }
+
+    public EstadosDelTest getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadosDelTest estado) {
+        this.estado = estado;
     }
 
     public String getBuild() {
@@ -25,11 +36,17 @@ public class TestCaseEjecutado extends TestCase{
         this.owner = owner;
     }
 
-    public Bug getBugAssosiated() {
-        return bugAssosiated;
+    public Issues getIssueAsociado() {
+        return issueAsociado;
     }
 
-    public void setBugAssosiated(Bug bugAssosiated) {
-        this.bugAssosiated = bugAssosiated;
+    public void setIssueAsociado(Issues issueAsociado) {
+        this.issueAsociado = issueAsociado;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Test ejecutado: %s \nPrioridad: %s\nPasos: %s\nCreado por: %s\nBuild: %s\nOwner: %s\nIssue asociad: %s\nEstado: %s\n*****************",this.getTitle(),this.getPriority(),this.getPasos(),this.getCreador(),build,owner,issueAsociado,estado);
+    }
+
 }

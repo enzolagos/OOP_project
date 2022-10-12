@@ -1,21 +1,15 @@
 package desarrollo;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Pasos {
 
-    private String titulo;
     private String[] pasos;
     private String resultado;
 
-    public Pasos(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public Pasos(String[] pasos) {
+        this.pasos = pasos;
     }
 
     public String[] getPasos() {
@@ -33,4 +27,11 @@ public class Pasos {
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(pasos);
+    }
+
+
 }

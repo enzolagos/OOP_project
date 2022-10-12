@@ -1,15 +1,19 @@
 package desarrollo;
 
 public abstract class Issues {
+    public enum Severidad{
+        BLOQUEADORA, ALTA, MEDIA, BAJA, TRIVIAL
+    }
 
     private String titulo;
     private String descripcion;
-    private String prioridad;
+    private TestCase.Prioridad prioridad;
     private Pasos pasos;
-    private String severidad;
+    private Severidad severidad;
     private String actualResult;
     private QA reporta_QA;
     private DEV devAsiganado;
+
 
     public QA getReporta_QA() {
         return reporta_QA;
@@ -43,11 +47,11 @@ public abstract class Issues {
         this.descripcion = descripcion;
     }
 
-    public String getPrioridad() {
+    public TestCase.Prioridad getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(TestCase.Prioridad prioridad) {
         this.prioridad = prioridad;
     }
 
@@ -59,11 +63,11 @@ public abstract class Issues {
         this.pasos = pasos;
     }
 
-    public String getSeveridad() {
+    public Severidad getSeveridad() {
         return severidad;
     }
 
-    public void setSeveridad(String severidad) {
+    public void setSeveridad(Severidad severidad) {
         this.severidad = severidad;
     }
 

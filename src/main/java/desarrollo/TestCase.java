@@ -1,17 +1,25 @@
 package desarrollo;
 
 public class TestCase {
-    private String title;
-    private String priority;
-    private String description;
-    private Pasos pasos;
-    private String status;
 
-    public TestCase(String title, String priority, Pasos pasos, String status) {
+    public enum EstadosDelTest{
+        PASSED,FAILED,BLOCKED;
+    }
+    public enum Prioridad{
+        HIGH,MEDIUM,LOW
+    }
+    private String title;
+    private String description;
+    private Owner creador;
+    private Pasos pasos;
+    private Prioridad priority;
+
+
+    public TestCase(String title, Prioridad priority, Pasos pasos, Owner creador) {
         this.title = title;
         this.priority = priority;
         this.pasos = pasos;
-        this.status = status;
+        this.creador = creador;
     }
 
     public String getTitle() {
@@ -22,11 +30,11 @@ public class TestCase {
         this.title = title;
     }
 
-    public String getPriority() {
+    public Prioridad getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Prioridad priority) {
         this.priority = priority;
     }
 
@@ -46,12 +54,28 @@ public class TestCase {
         this.pasos = pasos;
     }
 
-
-    public String getStatus() {
-        return status;
+    public TestCaseEjecutado ejecutar(String build,Issues issueAsociado, TestCase.EstadosDelTest estado){
+        TestCaseEjecutado testEjecutado = new TestCaseEjecutado(this.title,this.priority,this.pasos,this.creador);
+        testEjecutado.setBuild(build);
+        testEjecutado.setIssueAsociado(issueAsociado);
+        testEjecutado.setEstado(estado);
+        return testEjecutado;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return String.format("TestCase: %s \nDescripcion: %s\nCreado por: %s\nPasos: %s\nPrioridad: %s\n",title,description,creador,pasos,priority);
     }
+
+
+
+
+    public Owner getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Owner creador) {
+        this.creador = creador;
+    }
+
 }
