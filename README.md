@@ -1,21 +1,6 @@
 # OOP Project
 ###### Team 3: Julian Barbieri, Enzo Lagos
-### Tareas a realizar
-    - Crear un repositorio github
- 
-    - master debe estar protegido - PR
 
-    - branch por persona/funcionalidad
-
-    - Jira
-
-    - analizar el problema
-
-    - desarrollando
-
-    - testeando
-
-__ __
 ### Enunciado:
 
 Se tiene un manejador de test cases completo donde se necesitan varias configuraciones
