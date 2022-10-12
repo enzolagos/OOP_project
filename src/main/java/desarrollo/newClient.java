@@ -46,15 +46,42 @@ public class newClient {
         TestCase tc1 = new TestCase("Inspeccion de boton [LOGIN]", HIGH,pasos,qa1);
         tc1.setDescription("El siguiente test es para verificar si el boton de login funciona correctamente");
 
-        TestCase tc2 = new TestCase("Inspeccion de boton [REGISTER]", HIGH,pasos,qa2);
-        TestCase tc3 = new TestCase("Inspeccion de boton [RECUPERAR CONTRASENA]", HIGH, pasos,qa3);
+        Pasos pasosTC2 = new Pasos(new String[]{"1) Click en el boton [REGISTER]"});
+        TestCase tc2 = new TestCase("Inspeccion de boton [REGISTER]", HIGH,pasosTC2,qa2);
+        tc2.setDescription("Se verifica si el boton register funciona al hacerle click");
+
+        Pasos pasosTC3 = new Pasos(new String[]{});
+        TestCase tc3 = new TestCase("Inspeccion de boton [RECUPERAR CONTRASENA]", HIGH, pasosTC3,qa3);
+        tc3.setDescription("Se verifica si el boton recuperar contraseña funciona");
+
+        Pasos pasosTC4 = new Pasos(new String[]{"1)Click en el campo email","2)Escribir su mail","3)Click en el campo contrasena","4)Completar contrasena","5) Click en crear cuenta"});
         TestCase tc4 = new TestCase("Login con mail invalido y contrasena valida", HIGH, pasos,qa5);
+        tc4.setDescription("Se verifica si el usuario puede crear una cuenta");
+
+        Pasos pasosTC5 = new Pasos(new String[]{"1)Click en el boton [INGRESAR]","2)Sin soltar, arrastrar hacia afuera del boton"});
         TestCase tc5 = new TestCase("Login con mail valido y contrasena valida", HIGH, pasos,qa4);
-        TestCase tc6 = new TestCase("Login con mail valido y contrasena invalida", HIGH,pasos,qa4);
-        TestCase tc7 = new TestCase("Login con campos en blanco", HIGH, pasos,qa6);
-        TestCase tc8 = new TestCase("Inspeccion de boton [LOGOUT]", MEDIUM, pasos,qa1);
-        TestCase tc9 = new TestCase("Creacion de cuenta", LOW,pasos,qa2);
-        TestCase tc10 = new TestCase("Recuperacion de contrasena", LOW,pasos,qa5);
+        tc5.setDescription("Se verifica que el boton ingresar no funciona si el usuario lo arrastra");
+
+        Pasos pasosTC6 = new Pasos(new String[]{"1)Click en el boton registrar","2)Escribir mail","3)Escribir contrasena"});
+        TestCase tc6 = new TestCase("Registrarse con mail valido y contrasena valida", LOW, pasosTC6,qa1);
+        tc6.setDescription("Se verifica si el usuario puede registrarse");
+
+        Pasos pasosTC7 = new Pasos(new String[]{"1)Click en el boton registrar","2)Escribir su mail","3)Escribir contrasena"});
+        TestCase tc7 = new TestCase("Login con mail invalido y contrasena valida", MEDIUM, pasosTC7,qa2);
+        tc7.setDescription("Se verifica si el usuario NO puede registrarse con datos invalidos");
+
+        Pasos pasosTC8 = new Pasos(new String[]{"1)Click en el boton registrar","2)Escribir su mail","3)Click en el campo contrasena"});
+        TestCase tc8 = new TestCase("Login con mail invalido y contrasena invalida", HIGH, pasosTC8,qa5);
+        tc8.setDescription("Se verifica si el usuario NO puede registrarse con datos invalidos");
+
+        Pasos pasosTC9 = new Pasos(new String[]{"1)Click en el campo contraseña vieja","2)Escribir contraseña vieja","3)Click en el campo contrasena nueva","4)ingresar contrasena nueva","5) Click en cambiar contraseña"});
+        TestCase tc9 = new TestCase("Contraseña nueva con datos validos y contraseña vieja con datos validos", HIGH, pasosTC9,qa4);
+        tc9.setDescription("Se verifica si el usuario puede cambiar contraseña");
+
+        Pasos pasosTC10 = new Pasos(new String[]{"1)Click en el campo contraseña vieja","2)Escribir contraseña vieja","3)Click en el campo contrasena nueva","4)ingresar contrasena nueva","5) Click en cambiar contraseña"});
+        TestCase tc10 = new TestCase("Contraseña nueva con datos invalidos y contraseña vieja con datos validos", LOW, pasosTC10,qa5);
+        tc10.setDescription("Se verifica que el usuario NO pueda cambiarse de contraseña con datos invalidos");
+
 
         //se crean bugs y enhancements
         Bug bug1 = new Bug("Error de login","No funciona cuando apreto el boton",HIGH,pasos, BLOQUEADORA,"Aparece error 505","Deberia ya estar logueado");
@@ -70,12 +97,12 @@ public class newClient {
 
         //se crea el testsuite y se agregan los tests sin ejecutar
         TestSuite testSuite1 = new TestSuite("Login/Register","4");
-        testSuite1.setTestPorEjecutar(List.of(new TestCase[]{tc1, tc2, tc3, tc4, tc5, tc6, tc7, tc8, tc9, tc10}));
+        testSuite1.setTestPorEjecutar(List.of(new TestCase[]{tc1, tc2, tc3,tc4,tc5,tc6,tc7,tc8,tc9,tc10}));
 
         //se ejecutan los test y se agregan al testSuite
         testSuite1.ejecutarTestCases(listaDeIssues);
 
-
+        System.out.println("************SE EJECUTAN METODOS************");
         //muestro TC creados por un qa
         System.out.println("****** test cases creados por un QA especifico ******");
         testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(IngresoDeDatos.elegirQA(listaDeQAs)));

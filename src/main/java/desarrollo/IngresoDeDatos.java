@@ -13,7 +13,7 @@ public class IngresoDeDatos {
             System.out.println(String.format("%s %s",i,listaDeQAs.get(i).toString()));
         }
         int indice = sc.nextInt();
-        return listaDeQAs.get(indice);
+        return indice<listaDeQAs.size() && indice>=0 ? listaDeQAs.get(indice) : elegirQA(listaDeQAs);
     }
 
     public static DEV elegirDEV(List<DEV> listaDeDEVs){
@@ -22,7 +22,7 @@ public class IngresoDeDatos {
             System.out.println(String.format("%s %s",i,listaDeDEVs.get(i).toString()));
         }
         int indice = sc.nextInt();
-        return listaDeDEVs.get(indice);
+        return indice>=0 && indice<listaDeDEVs.size() ? listaDeDEVs.get(indice) : elegirDEV(listaDeDEVs);
     }
     public static TestCase.Prioridad elegirPrioridad(){
         System.out.println("Por favor elija la prioridad de los TC que desea encontrar:");
@@ -42,7 +42,7 @@ public class IngresoDeDatos {
     }
     public static Issues.Severidad elegirSeveridad(){
 
-        System.out.println("Por favor elija la severidad del bug que desea encontrar:");
+        System.out.println("Por favor elija la severidad del bug que desea encontrar, si la opcion no es valida se mostraran los de severidad MEDIA.");
         System.out.println(String.format("%s BLOQUEADORA\n%s ALTA\n%s MEDIA\n%s BAJA\n%s TRIVIAL",0,1,2,3,4));
         int opcion = sc.nextInt();
 
@@ -58,12 +58,11 @@ public class IngresoDeDatos {
             case 4:
                 return Issues.Severidad.TRIVIAL;
             default:
-                System.out.println("Opcion no valida, se mostraran los de severidad BLOQUEADORA");
-                return Issues.Severidad.BLOQUEADORA;
+                return Issues.Severidad.MEDIA;
         }
     }
     public static TestCase.EstadosDelTest elegirEstado(){
-        System.out.println("Elija estado para asignar al test:\n1. PASSED\n2. FAILED\n3. BLOCKED");
+        System.out.println("Elija estado para asignar al test:\n1. PASSED\n2. FAILED\n3. BLOCKED\nSi la opcion no es valida se asignara FAILED.");
         int opcion = sc.nextInt();
         switch (opcion){
             case 1:
@@ -73,7 +72,6 @@ public class IngresoDeDatos {
             case 3:
                 return TestCase.EstadosDelTest.BLOCKED;
             default:
-                System.out.println("La opcion no es valida, se asignara FAILED");
                 return TestCase.EstadosDelTest.FAILED;
         }
     }

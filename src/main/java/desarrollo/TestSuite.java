@@ -136,17 +136,26 @@ public class TestSuite {
         ) {
             System.out.println(bug.toString());
         }
+        if (listaBugs.size() == 0){
+            System.out.println("No hay bugs asociados.");
+        }
     }
     public void mostrarTests(List <TestCase> testsCases){
         for (TestCase test: testsCases
         ) {
             System.out.println(test.toString());
         }
+        if (testsCases.size() == 0){
+            System.out.println("No hay tests asociados");
+        }
     }
     public void mostrarTestsEjecutados(List <TestCaseEjecutado> testsCasesEj){
         for (TestCase test: testsCasesEj
         ) {
             System.out.println(test.toString());
+        }
+        if (testsCasesEj.size() == 0){
+            System.out.println("No hay tests asociados");
         }
     }
 }

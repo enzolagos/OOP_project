@@ -5,20 +5,11 @@ import java.util.Scanner;
 
 public class Pasos {
 
-    private String titulo;
     private String[] pasos;
     private String resultado;
 
     public Pasos(String[] pasos) {
         this.pasos = pasos;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String[] getPasos() {
