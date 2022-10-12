@@ -2,6 +2,7 @@ package desarrollo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TestSuite {
     private String titulo;
@@ -54,12 +55,25 @@ public class TestSuite {
         testCasesEjecutados.add(testCaseEjecutado);
     }
 
+    public void ejecutarTestCases(List<Issues> issuesAAsociar){
+        Scanner scanner = new Scanner(System.in);
+        for (TestCase test: testPorEjecutar
+             ) {
+            System.out.println("Ejecutando: "+test.getTitle());
+            System.out.printf("Ingrese el build para el test: ");
+            String build = scanner.nextLine();
+            TestCaseEjecutado TCEjecutado = test.ejecutar(build,IngresoDeDatos.elegirIssue(issuesAAsociar),IngresoDeDatos.elegirEstado());
+            testCasesEjecutados.add(TCEjecutado);
+            System.out.println("***********************************************");
+        }
+    }
+
     public List<Bug> obtenerBugsAsociadosAlDev(DEV dev){ //&& test.getIssueAsociado() instanceof Bug
         List<Bug> bugsAsociados = new ArrayList<>();
         for (TestCaseEjecutado test: testCasesEjecutados) {
 
             //si es del dev agregarlo a la lista
-            if(test.getIssueAsociado() != null && test.getIssueAsociado().getDevAsiganado().equals(dev) && test.getIssueAsociado() instanceof Bug){
+            if(test.getIssueAsociado() != null && test.getIssueAsociado().getDevAsiganado().equals(dev) && test.getIssueAsociado() instanceof Bug && !bugsAsociados.contains((Bug) test.getIssueAsociado())){
                 bugsAsociados.add((Bug) test.getIssueAsociado());
             }
         }
@@ -110,7 +124,7 @@ public class TestSuite {
         List<Bug> bugs = new ArrayList<>();
         for (TestCaseEjecutado test: testCasesEjecutados
              ) {
-            if (test.getIssueAsociado() != null && test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug){
+            if (test.getIssueAsociado() != null && test.getIssueAsociado().getSeveridad().equals(severidad) && test.getIssueAsociado() instanceof Bug && !bugs.contains((Bug) test.getIssueAsociado())){
                 bugs.add((Bug) test.getIssueAsociado());
             }
         }

@@ -1,6 +1,8 @@
 package desarrollo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 //importo prioridades
 import static desarrollo.TestCase.Prioridad.HIGH;
@@ -30,15 +32,20 @@ public class newClient {
         QA qa4 = new QA("Federico", "Padin");
         QA qa5 = new QA("Federico", "Roman");
         QA qa6 = new QA("Emanuel", "Ditzel");
+        List <QA> listaDeQAs = new ArrayList<>();
+        listaDeQAs.addAll(List.of(new QA[]{qa1,qa2,qa3,qa4,qa5,qa6}));
 
         DEV dev1 = new DEV("Pedro", "Nalga");
         DEV dev2 = new DEV("Carlos", "Paleta");
+        List <DEV> listaDeDEVs = new ArrayList<>();
+        listaDeDEVs.addAll(List.of(new DEV[]{dev1,dev2}));
 
-        //creo unos pasos para testear
-        Pasos pasos = new Pasos(new String[]{"1) Click en el boton [LOGIN]","2) Completar campo EMAIL con 'enzo.lagos@gmail.com'","3)Completar campo CONTRASENA con '123456'","4)Click en LOGUEARSE"});
 
         //se crean los test
+        Pasos pasos = new Pasos(new String[]{"1) Click en el boton [LOGIN]","2) Completar campo EMAIL con 'enzo.lagos@gmail.com'","3)Completar campo CONTRASENA con '123456'","4)Click en LOGUEARSE"});
         TestCase tc1 = new TestCase("Inspeccion de boton [LOGIN]", HIGH,pasos,qa1);
+        tc1.setDescription("El siguiente test es para verificar si el boton de login funciona correctamente");
+
         TestCase tc2 = new TestCase("Inspeccion de boton [REGISTER]", HIGH,pasos,qa2);
         TestCase tc3 = new TestCase("Inspeccion de boton [RECUPERAR CONTRASENA]", HIGH, pasos,qa3);
         TestCase tc4 = new TestCase("Login con mail invalido y contrasena valida", HIGH, pasos,qa5);
@@ -57,37 +64,33 @@ public class newClient {
         Enhancement enh1 = new Enhancement("Cambiar color boton Login","El color no contrasta con el fondo",LOW,pasos,BAJA,"El boton esta azul","El boton deberia ser blanco");
         enh1.setDevAsiganado(dev2);
 
+        List <Issues> listaDeIssues = new ArrayList<>();
+        listaDeIssues.addAll(List.of(new Issues[]{bug1,bug2,enh1}));
+
+
         //se crea el testsuite y se agregan los tests sin ejecutar
         TestSuite testSuite1 = new TestSuite("Login/Register","4");
         testSuite1.setTestPorEjecutar(List.of(new TestCase[]{tc1, tc2, tc3, tc4, tc5, tc6, tc7, tc8, tc9, tc10}));
 
         //se ejecutan los test y se agregan al testSuite
-        testSuite1.agregarATestCasesEjecutados(tc1.ejecutar("11/10",bug1, FAILED));
-        testSuite1.agregarATestCasesEjecutados(tc2.ejecutar("11/10",null, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc3.ejecutar("11/10",null, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc4.ejecutar("11/10",null, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc5.ejecutar("11/10",bug2, BLOCKED));
-        testSuite1.agregarATestCasesEjecutados(tc6.ejecutar("11/10",bug1, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc7.ejecutar("11/10",null, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc8.ejecutar("11/10",null, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc9.ejecutar("11/10",enh1, PASSED));
-        testSuite1.agregarATestCasesEjecutados(tc10.ejecutar("11/10",bug2, BLOCKED));
+        testSuite1.ejecutarTestCases(listaDeIssues);
+
 
         //muestro TC creados por un qa
-        System.out.println("*** test cases creados por: "+qa4.toString()+" ***");
-        testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(qa4));
+        System.out.println("****** test cases creados por un QA especifico ******");
+        testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(IngresoDeDatos.elegirQA(listaDeQAs)));
 
         //muestro bugs asignados a un dev
-        System.out.println("*** bugs asignados a:"+dev2.toString()+" ***");
-        testSuite1.mostrarBugs(testSuite1.obtenerBugsAsociadosAlDev(dev2));
+        System.out.println("****** bugs asignados a un DEV especifico ******");
+        testSuite1.mostrarBugs(testSuite1.obtenerBugsAsociadosAlDev(IngresoDeDatos.elegirDEV(listaDeDEVs)));
 
         //muestro tc por prioridad
-        System.out.println("*** TC con prioridad HIGH");
-        testSuite1.mostrarTests(testSuite1.obtenerTestCasesPorPrioridad(TestCase.Prioridad.HIGH));
+        System.out.println("*** TC por prioridad especifica");
+        testSuite1.mostrarTests(testSuite1.obtenerTestCasesPorPrioridad(IngresoDeDatos.elegirPrioridad()));
 
         //muestro bugs con severidad especifica
-        System.out.println("*** Bugs con severidad ALTA ***");
-        testSuite1.mostrarBugs(testSuite1.obtenerBugsPorSeveridad(Issues.Severidad.ALTA));
+        System.out.println("*** Bugs con severidad especifica ***");
+        testSuite1.mostrarBugs(testSuite1.obtenerBugsPorSeveridad(IngresoDeDatos.elegirSeveridad()));
 
         //muestro estados de los test
         System.out.println("*** Estados de los test ejecutados ***");
