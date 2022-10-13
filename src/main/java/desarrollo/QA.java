@@ -32,6 +32,6 @@ public class QA extends Owner{
 
     @Override
     public String toString() {
-        return "QA: " + super.getNombre();
+        return "QA: " + super.getNombre() + " "+ super.getApellido();
     }
 }
