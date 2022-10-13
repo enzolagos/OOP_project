@@ -73,15 +73,16 @@ public class Client {
         tc10.setDescription("Se verifica que el usuario NO pueda cambiarse de contraseña con datos invalidos");
 
 
-        //se crean bugs y enhancements
+        //se crean bugs y enhancements y se asocian a un dev
         Bug bug1 = new Bug("Error de login","No funciona cuando apreto el boton",HIGH,pasosTC1, BLOQUEADORA,"Aparece error 505","Deberia ya estar logueado");
-        bug1.setDevAsiganado(dev1);
+        dev1.getBugAsignados().add(bug1);
         Bug bug2 = new Bug("Error de Logout","No aparece el boton",HIGH,pasosTC1, ALTA,"Aparece error 505","Deberia poderse salir");
-        bug2.setDevAsiganado(dev2);
+        dev2.getBugAsignados().add(bug2);
         Bug bug3 = new Bug("Error de Register","No pasa nada cuando el usuario se quiere registrar",HIGH,pasosTC1, BAJA,"Aparece error 505","Deberia poder registrarse");
-        bug3.setDevAsiganado(dev2);
+        dev2.getBugAsignados().add(bug3);
         Bug bug4 = new Bug("Error de carga de pagina","No aparece el boton",HIGH,pasosTC1, MEDIA,"La pagina se cierra inesperadamente","Deberia cargar");
-        bug4.setDevAsiganado(dev1);
+        dev1.getBugAsignados().add(bug4);
+
         Enhancement enh1 = new Enhancement("Cambiar color boton Login","El color no contrasta con el fondo",LOW,pasosTC1,BAJA,"El boton esta azul","El boton deberia ser blanco");
         enh1.setDevAsiganado(dev2);
 
@@ -91,7 +92,8 @@ public class Client {
 
         //se crea el testsuite y se agregan los tests sin ejecutar
         TestSuite testSuite1 = new TestSuite("Login/Register","4");
-        testSuite1.setTestPorEjecutar(List.of(new TestCase[]{tc1,tc2,tc3,tc4}));
+        testSuite1.setTestPorEjecutar(List.of(new TestCase[]{tc1,tc2,tc3,tc4,tc5})); //agregar mas tc de ser necesario
+        testSuite1.setIssuesAsociados(listaDeIssues);
 
         //se ejecutan los test y se agregan al testSuite
         System.out.println("************SE EJECUTAN LOS TESTS************");
@@ -101,7 +103,7 @@ public class Client {
 
         //muestro TC creados por un qa
         System.out.println("****** test cases creados por un QA especifico ******");
-        testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(qa1));
+        testSuite1.mostrarTests(testSuite1.obtenerTestCasesCreadosPorUnQA(IngresoDeDatos.elegirQA(listaDeQAs)));
 
         //muestro bugs asignados a un dev
         System.out.println("****** bugs asignados a un DEV especifico ******");
