@@ -76,7 +76,7 @@ public class IngresoDeDatos {
         }
     }
     public static Issues elegirIssue(List<Issues> issues){
-        System.out.println("Por favor ingrese el indice del issue a asociar u otro para asignar null:");
+        System.out.println("Por favor ingrese el indice del issue a asociar u otro numero para asignar null:");
         for (int i=0;i<issues.size();i++){
             System.out.println(String.format("%s %s",i,issues.get(i).getTitulo().toString()));
         }
